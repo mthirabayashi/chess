@@ -1,5 +1,6 @@
 class Piece
-  attr_reader :color, :board, :pos
+  attr_accessor :pos
+  attr_reader :color, :board
 
   def initialize()
   end
@@ -20,5 +21,5 @@ class Piece
 
   def move_into_check?(to_pos)
   end
-  
+
 end

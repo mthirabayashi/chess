@@ -1,3 +1,5 @@
+require 'singleton'
+
 class NullPiece
   include Singleton
 
@@ -10,7 +12,8 @@ class NullPiece
   end
 
   def to_s
-
+    " | "
+    #rely on color instance variable
   end
 
   def empty?

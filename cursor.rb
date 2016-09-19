@@ -31,8 +31,8 @@ MOVES = {
 }
 
 class Cursorable
-
-  attr_reader :cursor_pos, :board
+  attr_accessor :cursor_pos
+  attr_reader :board
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
@@ -76,8 +76,32 @@ class Cursorable
   end
 
   def handle_key(key)
+
+    case key
+    when :left
+      update_pos(MOVES[key])
+    when :right
+      update_pos(MOVES[key])
+    when :up
+      update_pos(MOVES[key])
+    when :down
+      update_pos(MOVES[key])
+    when :space
+      @cursor_pos
+    when :return
+      @cursor_pos
+    when :ctrl_c
+      Process.exit(0)
+    end
+
   end
 
   def update_pos(diff)
+    next_move = [@cursor_pos[0] + diff.first, @cursor_pos[1] + diff.last]
+
+    if @board.in_bounds?(next_move)
+      @cursor_pos[0] += diff.first
+      @cursor_pos[1] += diff.last
+    end
   end
 end
