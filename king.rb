@@ -20,7 +20,9 @@ class King < Piece
   end
 
   def symbol
-    "\u2654".encode('utf-8')
+    return "\u2654".encode('utf-8') if color == :white
+    "\u265A".encode('utf-8')
+
   end
 
   def to_s

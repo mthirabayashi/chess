@@ -25,6 +25,10 @@ class Board
     @rows[0][5] = Bishop.new(:white, self, [0,5])
     @rows[0][4] = Queen.new(:white, self, [0,4])
 
+    8.times do |num|
+      @rows[1][num] = Pawn.new(:white, self, [1,num])
+    end
+
     @rows[7][3] = King.new(:black, self, [7,3])
     @rows[7][1] = Knight.new(:black, self, [7,1])
     @rows[7][6] = Knight.new(:black, self, [7,6])
@@ -33,6 +37,10 @@ class Board
     @rows[7][2] = Bishop.new(:black, self, [7,2])
     @rows[7][5] = Bishop.new(:black, self, [7,5])
     @rows[7][4] = Queen.new(:black, self, [7,4])
+
+    8.times do |num|
+      @rows[6][num] = Pawn.new(:black, self, [6,num])
+    end
   end
 
   def [](pos)
