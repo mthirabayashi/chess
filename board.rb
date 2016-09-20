@@ -63,7 +63,12 @@ class Board
     else
       moved_piece.pos = to_pos
 
-      self[to_pos], self[from_pos] = self[from_pos], self[to_pos]
+      if self[to_pos].class == NullPiece
+        self[to_pos], self[from_pos] = self[from_pos], self[to_pos]
+      else
+        self[to_pos] = self[from_pos]
+        self[from_pos] = @null_piece
+      end
 
       self[to_pos].pos = to_pos
     end
