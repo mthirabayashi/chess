@@ -1,5 +1,6 @@
+require_relative 'piece'
 
-module Slideable
+class Slideable < Piece
 
   def moves
   end
@@ -17,5 +18,5 @@ module Slideable
 
   def grow_unblocked_moves_in_dir(dx, dy)
   end
-  
+
 end

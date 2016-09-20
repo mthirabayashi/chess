@@ -8,6 +8,10 @@ class Board
     @rows = Array.new(8) {Array.new(8) {@null_piece}}
   end
 
+  def populate_board
+    @rows[0][3] = King.new(:black, self, [0,3])
+  end
+
   def [](pos)
     x,y = pos
     @rows[x][y]
@@ -35,8 +39,8 @@ class Board
     else
       moved_piece.pos = to_pos
 
-      Board[to_pos] = moved_piece
-      Board[from_pos] = @null_piece
+      [to_pos] = moved_piece
+      [from_pos] = @null_piece
     end
   end
 

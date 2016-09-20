@@ -23,9 +23,9 @@ class Display
           row_string += piece.to_s.colorize(:background => :red)
         else
           if (idx1+idx2) % 2 == 0
-            row_string += piece.to_s.colorize(:color => :black, :background => :white)
+            row_string += piece.to_s.colorize(:color => piece.color, :background => :white)
           else
-            row_string += piece.to_s.colorize(:color => :white, :background => :black)
+            row_string += piece.to_s.colorize(:color => piece.color, :background => :black)
           end
         end
 
