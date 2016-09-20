@@ -12,7 +12,7 @@ class NullPiece
   end
 
   def to_s
-    " | "
+    " |  "
     #rely on color instance variable
   end
 
