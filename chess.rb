@@ -27,12 +27,10 @@ class Chess
         until start_pos
           start_pos = @display.handle_input
         end
-        puts start_pos
 
         until destination_pos
           destination_pos = @display.handle_input
         end
-        puts destination_pos
 
         @board.move_piece!(start_pos, destination_pos)
         # sleep 2

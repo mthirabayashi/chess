@@ -1,18 +1,14 @@
 require_relative 'slideable'
 require_relative 'piece'
 
-class Queen < Piece
+class Bishop < Piece
   include Slideable
 
   MOVES = [
     [-1, -1],
     [-1, 1],
     [1, 1],
-    [1, -1],
-    [0, -1],
-    [-1,0],
-    [0, 1],
-    [1,0]
+    [1, -1]
   ]
 
   def initialize(color, board, pos)
@@ -20,8 +16,8 @@ class Queen < Piece
   end
 
   def symbol
-    return "\u2655".encode('utf-8') if color == :white
-    "\u265B".encode('utf-8')
+    return "\u2657".encode('utf-8') if color == :white
+    "\u265D".encode('utf-8')
   end
 
   def to_s
