@@ -3,16 +3,27 @@ require_relative 'piece'
 
 class Knight < Piece
   include Stepable
-  
-  def initialize
+
+  MOVES = [
+    [2, 1],
+    [1, 2],
+    [-1, 2],
+    [-2, 1],
+    [-2, -1],
+    [-1, -2],
+    [1, -2],
+    [2, -1]
+  ]
+
+  def initialize(color, board, pos)
+    super
   end
 
   def symbol
   end
 
-  protected
-
-  def move_diffs
+  def to_s
+    ' n '
   end
 
 end

@@ -1,5 +1,6 @@
 require_relative 'null_piece'
 require_relative 'king'
+require_relative 'knight'
 
 class Board
   attr_reader :rows
@@ -12,6 +13,8 @@ class Board
 
   def populate_board
     @rows[0][3] = King.new(:white, self, [0,3])
+    @rows[0][1] = Knight.new(:white, self, [0,1])
+    @rows[0][6] = Knight.new(:white, self, [0,6])
   end
 
   def [](pos)
