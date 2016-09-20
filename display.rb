@@ -23,9 +23,9 @@ class Display
           row_string += piece.to_s.colorize(:background => :red)
         else
           if (idx1+idx2) % 2 == 0
-            row_string += piece.to_s.colorize(:color => piece.color, :background => :white)
+            row_string += piece.to_s.colorize(:color => piece.color, :background => :green)
           else
-            row_string += piece.to_s.colorize(:color => piece.color, :background => :black)
+            row_string += piece.to_s.colorize(:color => piece.color, :background => :light_blue)
           end
         end
 
@@ -37,6 +37,7 @@ class Display
 
   def handle_input
     system "clear"
+    puts
     render
     @cursor.get_input
     # current_cursor_pos = @cursor.cursor_pos

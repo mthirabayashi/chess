@@ -20,8 +20,27 @@ class Chess
     #   retry
     # end
     while true
-      @display.handle_input
+      begin
+        start_pos = nil
+        destination_pos = nil
 
+        until start_pos
+          start_pos = @display.handle_input
+        end
+        puts start_pos
+
+        until destination_pos
+          destination_pos = @display.handle_input
+        end
+        puts destination_pos
+
+        @board.move_piece!(start_pos, destination_pos)
+        # sleep 2
+      rescue StandardError => e
+        puts "#{e.message}"
+        sleep 2
+        retry
+      end
     end
   end
 

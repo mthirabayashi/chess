@@ -1,4 +1,5 @@
 require_relative 'null_piece'
+require_relative 'king'
 
 class Board
   attr_reader :rows
@@ -6,10 +7,11 @@ class Board
   def initialize
     @null_piece = NullPiece.instance
     @rows = Array.new(8) {Array.new(8) {@null_piece}}
+    populate_board
   end
 
   def populate_board
-    @rows[0][3] = King.new(:black, self, [0,3])
+    @rows[0][3] = King.new(:white, self, [0,3])
   end
 
   def [](pos)
@@ -31,16 +33,18 @@ class Board
   end
 
   def move_piece!(from_pos, to_pos)
-
-    moved_piece = Board[from_pos]
+    p from_pos
+    p to_pos
+    moved_piece = self[from_pos]
 
     if moved_piece == @null_piece || !moved_piece.valid_moves.include?(to_pos)
       raise "Invalid move, try again"
     else
       moved_piece.pos = to_pos
 
-      [to_pos] = moved_piece
-      [from_pos] = @null_piece
+      self[to_pos], self[from_pos] = self[from_pos], self[to_pos]
+
+      self[to_pos].pos = to_pos
     end
   end
 

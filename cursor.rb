@@ -100,8 +100,8 @@ class Cursorable
     next_move = [@cursor_pos[0] + diff.first, @cursor_pos[1] + diff.last]
 
     if @board.in_bounds?(next_move)
-      @cursor_pos[0] += diff.first
-      @cursor_pos[1] += diff.last
+      @cursor_pos = next_move
     end
+    nil
   end
 end

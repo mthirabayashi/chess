@@ -15,7 +15,7 @@ class King < Piece
     [-1,1]
   ]
 
-  def initialize
+  def initialize(color, board, pos)
     super
   end
 
@@ -23,5 +23,8 @@ class King < Piece
     " K "
   end
 
+  def to_s
+    " K "
+  end
 
 end
