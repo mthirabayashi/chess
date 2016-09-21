@@ -19,7 +19,7 @@ class Pawn < Piece
   end
 
   def possible_moves
-    forward_steps # + side_attacks
+    forward_steps + side_attacks
   end
 
   protected
@@ -47,12 +47,20 @@ class Pawn < Piece
       puts "returns"
       forward_steps << [@pos[0] + forward_dir, @pos[1]]
     end
-    p "forward steps: #{forward_steps}"
+
     forward_steps
   end
 
   def side_attacks
-
+    side_attacks = []
+    if @board[[@pos[0]+forward_dir, @pos[1]-1 ]].class!=NullPiece
+      side_attacks << @board[[@pos[0]+forward_dir, @pos[1]-1 ]] unless @color==@board[[@pos[0]+forward_dir, @pos[1]-1 ]].color
+    end
+    if @board[[@pos[0]+forward_dir, @pos[1]+1 ]].class!=NullPiece
+      side_attacks << @board[[@pos[0]+forward_dir, @pos[1]+1 ]] unless @color==@board[[@pos[0]+forward_dir, @pos[1]+1 ]].color
+    end
+    puts "possible side attacks: #{side_attacks}"
+    side_attacks
   end
 end
 #

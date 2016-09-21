@@ -33,7 +33,7 @@ class Chess
         end
 
         @board.move_piece!(start_pos, destination_pos)
-        sleep 2
+        # sleep 2
       rescue StandardError => e
         puts "#{e.message}"
         puts "#{e}"
