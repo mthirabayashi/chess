@@ -40,11 +40,11 @@ class Pawn < Piece
   def forward_steps
     forward_steps = []
     if at_start_row? && @board[[@pos[0]+forward_dir, @pos[1]]].class==NullPiece && @board[[@pos[0]+(2*forward_dir), @pos[1]]].class==NullPiece
-      puts "returns"
+      # puts "returns"
       forward_steps << [@pos[0] + (forward_dir * 2), @pos[1]]
     end
     if @board[[@pos[0]+forward_dir, @pos[1]]].class==NullPiece
-      puts "returns"
+      # puts "returns"
       forward_steps << [@pos[0] + forward_dir, @pos[1]]
     end
 
@@ -53,11 +53,16 @@ class Pawn < Piece
 
   def side_attacks
     side_attacks = []
-    if @board[[@pos[0]+forward_dir, @pos[1]-1 ]].class!=NullPiece
-      side_attacks << [@pos[0]+forward_dir, @pos[1]-1 ] unless @color==@board[[@pos[0]+forward_dir, @pos[1]-1 ]].color
+    left = @board[[@pos[0]+forward_dir, @pos[1]-1 ]]
+    right = @board[[@pos[0]+forward_dir, @pos[1]+1 ]]
+    left_pos = [@pos[0]+forward_dir, @pos[1]-1 ]
+    right_pos = [@pos[0]+forward_dir, @pos[1]+1 ]
+
+    if left.class != NullPiece && @board.in_bounds?(left_pos)
+      side_attacks << left_pos unless @color==left.color
     end
-    if @board[[@pos[0]+forward_dir, @pos[1]+1 ]].class!=NullPiece
-      side_attacks << [@pos[0]+forward_dir, @pos[1]+1 ] unless @color==@board[[@pos[0]+forward_dir, @pos[1]+1 ]].color
+    if right.class != NullPiece && @board.in_bounds?(right_pos)
+      side_attacks << right_pos unless @color==right.color
     end
 
     # puts "possible side attacks: #{side_attacks.first.class}"

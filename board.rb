@@ -62,8 +62,8 @@ class Board
   end
 
   def move_piece!(from_pos, to_pos)
-    p from_pos
-    p to_pos
+    # p from_pos
+    # p to_pos
     moved_piece = self[from_pos]
 
     if moved_piece == @null_piece || !moved_piece.valid_moves.include?(to_pos)
@@ -91,10 +91,30 @@ class Board
 
   end
 
-  protected
-  def make_starting_grid
+  def in_check?(color)
+    king_pos = find_king(color)
+    puts "black king at: #{king_pos}"
+    @rows.each do |row|
+      row.each do |piece|
+        if piece.class != NullPiece
+          return true if piece.possible_moves.include?(king_pos)
+        end
+      end
+    end
+    false
   end
 
+  protected
+  # def make_starting_grid
+  # end
+
   def find_king(color)
+    @rows.each do |row|
+      row.each do |piece|
+        if piece.class == King
+          return piece.pos if piece.color == color
+        end
+      end
+    end
   end
 end

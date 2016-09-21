@@ -33,7 +33,11 @@ class Chess
         end
 
         @board.move_piece!(start_pos, destination_pos)
-        # sleep 2
+
+        if @board.in_check?(:black)
+          puts "black player in check"
+          sleep 2
+        end
       rescue StandardError => e
         puts "#{e.message}"
         puts "#{e}"

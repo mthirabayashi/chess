@@ -36,7 +36,7 @@ class Display
   end
 
   def handle_input
-    # system "clear"
+    system "clear"
     puts
     render
     @cursor.get_input

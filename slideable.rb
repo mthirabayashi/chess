@@ -8,11 +8,11 @@ module Slideable
     possible_moves = []
 
     move_dirs.each do |diff|
-      p diff
+      # p diff
       possible_moves += grow_unblocked_moves_in_dir(diff[0], diff[1])
     end
 
-    p "ALL possible: #{possible_moves}"
+    # p "ALL possible: #{possible_moves}"
     possible_moves
   end
 
@@ -48,7 +48,7 @@ module Slideable
       temp_pos = [temp_pos[0] + dx, temp_pos[1] + dy]
     end
 
-    p "all_positions: #{all_positions}"
+    # p "all_positions: #{all_positions}"
     all_positions
   end
 
