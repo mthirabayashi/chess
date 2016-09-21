@@ -54,12 +54,13 @@ class Pawn < Piece
   def side_attacks
     side_attacks = []
     if @board[[@pos[0]+forward_dir, @pos[1]-1 ]].class!=NullPiece
-      side_attacks << @board[[@pos[0]+forward_dir, @pos[1]-1 ]] unless @color==@board[[@pos[0]+forward_dir, @pos[1]-1 ]].color
+      side_attacks << [@pos[0]+forward_dir, @pos[1]-1 ] unless @color==@board[[@pos[0]+forward_dir, @pos[1]-1 ]].color
     end
     if @board[[@pos[0]+forward_dir, @pos[1]+1 ]].class!=NullPiece
-      side_attacks << @board[[@pos[0]+forward_dir, @pos[1]+1 ]] unless @color==@board[[@pos[0]+forward_dir, @pos[1]+1 ]].color
+      side_attacks << [@pos[0]+forward_dir, @pos[1]+1 ] unless @color==@board[[@pos[0]+forward_dir, @pos[1]+1 ]].color
     end
-    puts "possible side attacks: #{side_attacks}"
+
+    # puts "possible side attacks: #{side_attacks.first.class}"
     side_attacks
   end
 end
